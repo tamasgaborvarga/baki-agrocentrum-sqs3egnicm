@@ -5,7 +5,7 @@
   // --- fejléc árnyék görgetéskor ---
   const hdr = document.getElementById('hdr');
   const onScroll = () => hdr && hdr.classList.toggle('is-scrolled', window.scrollY > 8);
-  onScroll();
+  requestAnimationFrame(onScroll); // nem szinkron: a betöltéskori scrollY-olvasás kényszerített reflow-t okozott (Lighthouse)
   window.addEventListener('scroll', onScroll, { passive: true });
 
   // --- mobilmenü ---

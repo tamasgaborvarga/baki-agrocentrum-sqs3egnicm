@@ -110,7 +110,7 @@ strong { font-weight: 650; }
 }
 
 /* ---------- gombok: kettő van, sötét háttéren inverz ---------- */
-.btn { display: inline-flex; align-items: center; gap: .6rem; min-height: 48px; padding: 0 1.3rem; border-radius: var(--r); font: 600 1rem/1 var(--f-text); text-decoration: none; border: 1.5px solid transparent; cursor: pointer; transition: background .2s, color .2s, border-color .2s; }
+.btn { display: inline-flex; align-items: center; gap: .6rem; min-height: 48px; padding: .55rem 1.3rem; border-radius: var(--r); font: 600 1rem/1.25 var(--f-text); text-align: left; text-decoration: none; border: 1.5px solid transparent; cursor: pointer; transition: background .2s, color .2s, border-color .2s; }
 .btn .ic { transition: transform .25s var(--ease); }
 .btn:hover .ic { transform: translateX(3px); }
 .btn--primary { background: var(--brand-ink); color: #fff; }
@@ -332,6 +332,13 @@ ol.chain { list-style: none; margin: 0; border-left: 2px solid var(--brand); pad
 .vt tbody tr:hover { background: var(--paper); }
 .vt .num { text-align: right; white-space: nowrap; font-variant-numeric: tabular-nums; }
 .vt tr[hidden] { display: none; }
+.vt th, .vt td { white-space: nowrap; }
+/* a fajtanév görgetéskor is látszik */
+.vt tbody th, .vt thead th:first-child { position: sticky; left: 0; z-index: 1; background: var(--paper-hi); box-shadow: inset -1px 0 0 var(--rule); }
+.vt thead th:first-child { background: var(--paper); }
+.vt tbody tr:hover th { background: var(--paper); }
+.tablehint { display: none; margin-bottom: .6rem; font-size: .85rem; color: var(--ink-2); }
+@media (max-width: 899px) { .tablehint { display: block; } }
 
 .tlist { margin-top: var(--s2); display: grid; gap: .6rem; }
 .tlist li { padding-left: 1.3rem; position: relative; color: var(--ink-2); }
@@ -387,6 +394,7 @@ ol.chain { list-style: none; margin: 0; border-left: 2px solid var(--brand); pad
 .ftr__ul { display: grid; gap: .45rem; }
 .ftr__meta { color: var(--on-dark-2); white-space: nowrap; }
 .ftr__bar { position: relative; display: flex; flex-wrap: wrap; justify-content: space-between; gap: .5rem 2rem; padding-block: var(--s3); font-size: .85rem; }
+.ftr__ids { display: flex; flex-wrap: wrap; gap: .2rem 1.5rem; }
 .ftr__bar::before { content: ''; position: absolute; top: 0; left: var(--gut); right: var(--gut); border-top: 1px solid rgb(238 240 230 / .15); }
 
 /* ---------- megjelenés (csak JS-sel, mozgáscsökkentésnél nincs) ---------- */
@@ -445,6 +453,11 @@ ol.chain { list-style: none; margin: 0; border-left: 2px solid var(--brand); pad
   .contactbar .btn { margin-top: .6rem; }
   .feature__cover { grid-template-columns: 120px 1fr; align-items: end; }
   .feature__cover img { width: 120px; }
+  /* a vázlattérkép ~0,6-szorosra kicsinyül -> nagyobb SVG-betű, hogy olvasható maradjon (~13/11 px) */
+  .map__name { font-size: 21px; }
+  .map__pt--main .map__name { font-size: 23px; }
+  .map__role { font-size: 17px; }
+  .map__scale text, .map__north text { font-size: 16px; }
 }
 
 @media (max-width: 380px) {
